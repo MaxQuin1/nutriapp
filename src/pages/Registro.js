@@ -1,5 +1,6 @@
 import React from 'react'
 import fondo from '../img/fondo.jpg'
+import '../App.css'
 function Registro() {
     return (
         <>
