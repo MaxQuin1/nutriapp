@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import {Link, Outlet } from "react-router-dom";
+import { BsFillChatDotsFill, BsPersonCircle } from "react-icons/bs";
+import { GrConfigure } from "react-icons/gr";
 import '../App.css'
 
 import "boxicons";
@@ -28,13 +30,22 @@ export default function Navbar() {
               
             </li>
             <li>
-            <box-icon type='solid' name='message-square-dots'></box-icon>
+              <a href="">
+                Mis pacientes
+              </a>
+              
             </li>
             <li>
-            <box-icon type="solid" name="cog"></box-icon>
+            <BsFillChatDotsFill size="2rem" />
             </li>
             <li>
-            <box-icon name="user-circle" type="solid"></box-icon>
+            <GrConfigure size="2rem"/>
+            </li>
+            <li>
+              
+              <BsPersonCircle size="2rem"/>
+              
+            
             </li>
           </ul>
         </div>

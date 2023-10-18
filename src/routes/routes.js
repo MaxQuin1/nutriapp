@@ -9,15 +9,15 @@ export const rutas = createBrowserRouter([
   
       {
         path: "/",
-        element: <Home/>
+        element: <Login/>
       },
       {
         path: '/miperfil',
         element: <MiPerfil/>
       },
   {
-    path: "/login",
-    element: <Login />,
+    path: "/home",
+    element: <Home />,
   },
   {
     path: "/registro",
