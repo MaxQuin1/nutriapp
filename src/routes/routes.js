@@ -6,23 +6,18 @@ import Registro from "../pages/Registro";
 import MiPerfil from "../pages/MiPerfil";
 
 export const rutas = createBrowserRouter([
-  {
-    path: "/",
-    element: <Navbar/>,
-    children: [
+  
       {
-        path: "/home",
-        element: <Home/>
+        path: "/",
+        element: <Login/>
       },
       {
         path: '/miperfil',
         element: <MiPerfil/>
-      }
-    ],
-  },
+      },
   {
-    path: "/login",
-    element: <Login />,
+    path: "/home",
+    element: <Home />,
   },
   {
     path: "/registro",
