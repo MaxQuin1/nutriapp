@@ -4,8 +4,10 @@ import { Link, Outlet } from "react-router-dom";
 import "boxicons";
 
 export default function Navbar() {
+  //Se sube un cambio en forma de comentario Andrea
   return (
     <>
+    
       <div className="bg-[#ACDA7F] dark:bg-[#ACDA7F] dark:text-white  text-black fixed mb-0 top-0 left-0 w-full flex flex-row justify-between px-20 py-8 items-center">
         <div>
           <Link to={"/home"}>
