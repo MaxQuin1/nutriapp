@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
-import {Link, Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { BsFillChatDotsFill, BsPersonCircle } from "react-icons/bs";
 import { GrConfigure } from "react-icons/gr";
-import '../App.css'
+import "../App.css";
 
 import "boxicons";
 
@@ -16,42 +16,27 @@ export default function Navbar() {
             <h1 className=" h-[100px]">Aqui ira el logo</h1>
           </div>
           <ul className="hidden md:flex pr-4 font-bold">
-
             <li>
-              <a href="/home">
-                Home
-              </a>
+              <a href="/home">Home</a>
             </li>
 
             <li>
-              <a href="">
-                Mis citas
-              </a>
-              
+              <a href="">Mis citas</a>
             </li>
             <li>
-              <a href="">
-                Mis pacientes
-              </a>
-              
+              <a href="">Mis pacientes</a>
             </li>
             <li>
-            <BsFillChatDotsFill size="2rem" />
+              <BsFillChatDotsFill size="2rem" />
             </li>
             <li>
-            <GrConfigure size="2rem"/>
+              <GrConfigure size="2rem" />
             </li>
             <li>
-              
-              <BsPersonCircle size="2rem"/>
-              
-            
+              <BsPersonCircle size="2rem" />
             </li>
           </ul>
         </div>
-
-
-
       </div>
 
       <Outlet />
