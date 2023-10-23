@@ -13,7 +13,13 @@ export default function Navbar() {
       <div className="bg-lime-200 w-screen h-[80px] z-10 drop-shadlow-lg">
         <div className="px-2 flex justify-between items-center w-full h-full">
           <div className="flex items-center">
-            <h1 className=" h-[100px]">Aqui ira el logo</h1>
+            <ul>
+              <li>
+                <Link to="../img/logo.png">
+                  <div className="w-4 h-full"></div>
+                </Link>
+              </li>
+            </ul>
           </div>
           <ul className="hidden md:flex pr-4 font-bold">
             <li>
