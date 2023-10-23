@@ -41,9 +41,9 @@
   list-style-type: none;
 }
 
-.background-image {
+div#mydiv{
   background-image: url('../src/img/fondo.jpg');
-  opacity: 0.5; /* Ajusta la opacidad según tus preferencias */
+   /* Ajusta la opacidad según tus preferencias */
   background-size: cover;
   background-position: center;
 }
