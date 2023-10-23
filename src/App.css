@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.TopNav u1{
+  list-style-type: none;
+}
+
+div#mydiv{
+  background-image: url('../src/img/fondo.jpg');
+   /* Ajusta la opacidad según tus preferencias */
+  background-size: cover;
+  background-position: center;
+}
