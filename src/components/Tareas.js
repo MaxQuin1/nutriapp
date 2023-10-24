@@ -13,23 +13,29 @@ function Tareas() {
       <div className="container mx-auto">
         <div className="flex justify-between">
           <div className="">
-            <BsPersonCircle size="10rem" />
-            <p className="text-center text-2xl">Mi perfil</p>
+            <BsPersonCircle size="8rem" />
+            <a href="/miperfil">
+              <p className="text-center text-2xl">Mi perfil</p>
+            </a>
+            
           </div>
           <div>
-            <BsFillCalendar2EventFill size="10rem" />
-            <p className="text-center text-2xl">Calendario y citas</p>
+            <BsFillCalendar2EventFill size="8rem" />
+            <a href="/Cita">
+              <p className="text-center text-2xl">Calendario y citas</p>
+            </a>
+            
           </div>
           <div>
-            <BsFillChatDotsFill size="10rem" />
+            <BsFillChatDotsFill size="8rem" />
             <p className="text-center text-2xl">Chat</p>
           </div>
           <div>
-            <BsCashCoin size="10rem" />
+            <BsCashCoin size="8rem" />
             <p className="text-center text-2xl">Pagos</p>
           </div>
           <div>
-            <BsFillBarChartLineFill size="10rem" />
+            <BsFillBarChartLineFill size="8rem" />
             <p className="text-center text-2xl">Mi actividad</p>
           </div>
         </div>
