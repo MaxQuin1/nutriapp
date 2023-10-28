@@ -1,9 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import Login from "../pages/Login";
-import Home from "../pages/Home";
 import Registro from "../pages/Registro";
+import Home from "../pages/Home";
 import MiPerfil from "../pages/MiPerfil";
 import Cita from '../pages/Cita'
+import Chat from "../pages/Chat";
+import Pagos from '../pages/Pagos'
+import InfoPaciente from '../pages/InfoPaciente'
+import Configuracion from "../pages/Configuracion";
 
 export const rutas = createBrowserRouter([
   {
@@ -15,15 +19,31 @@ export const rutas = createBrowserRouter([
     element: <Registro />,
   },
   {
-    path: "/miperfil",
-    element: <MiPerfil />,
-  },
-  {
     path: "/home",
     element: <Home />,
   },
   {
-    path: "/Cita",
+    path: "/miperfil",
+    element: <MiPerfil />,
+  },
+  {
+    path: "/cita",
     element: <Cita />
-  }
+  },
+  {
+    path: "/chat",
+    element: <Chat />
+  },
+  {
+    path: "/pagos",
+    element: <Pagos />
+  },
+  {
+    path: "/infopaciente",
+    element: <InfoPaciente />
+  },
+  {
+    path: "/configuracion",
+    element: <Configuracion />
+  },
 ]);
