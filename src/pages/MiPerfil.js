@@ -5,7 +5,7 @@ import NavDash from "../components/NavDash";
 function MiPerfil() {
   return (
     <>
-      <Navbar></Navbar>
+      <Navbar />
       <NavDash />
     </>
   );
