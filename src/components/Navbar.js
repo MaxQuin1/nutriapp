@@ -27,7 +27,7 @@ export default function Navbar() {
               <a href="/citas">Mis citas</a>
             </li>
             <li>
-              <a href="/pacientes">Mis pacientes</a>
+              <a href="/Pacientes">Mis pacientes</a>
             </li>
             <Link to="/chat">
             <li>
