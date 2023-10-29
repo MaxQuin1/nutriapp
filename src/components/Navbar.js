@@ -24,7 +24,7 @@ export default function Navbar() {
               <a href="/home">Home</a>
             </li>
             <li>
-              <a href="/citas">Mis citas</a>
+              <a href="/cita">Mis citas</a>
             </li>
             <li>
               <a href="/pacientes">Mis pacientes</a>
