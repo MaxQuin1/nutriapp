@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
     <div id="mydiv">
-    <Navbar></Navbar>
+    <Navbar/>
       <div className="h-screen relative ">
         <div className="w-full h-full background-image absolute top-0 left-0"></div>
         <div className=" text-white relative z-12 ">
