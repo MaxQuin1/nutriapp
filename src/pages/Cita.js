@@ -32,7 +32,7 @@ function Cita() {
                         <h1 className="text-4xl font-bold mb-4 text-black p-2 mt-5 w-[19%] rounded-lg items-r" style={{ position: 'absolute', top: '70px', left: '500px' }}>
                             Calendar
                         </h1>
-                        <div style={{ position: 'absolute', right: '58%', top: '200px', width: '24%', height: '300px' }}>
+                        <div className="absolute right-[50%] top-[200px] w-[24%] h-[300px]">
                             <Datepicker
                                 controls={['calendar', 'time']}
                                 display="inline"
