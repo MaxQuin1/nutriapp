@@ -2,8 +2,15 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import "../App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '@mobiscroll/react/dist/css/mobiscroll.min.css';
+import { Datepicker, setOptions, localeEs, Button } from '@mobiscroll/react';
+
 
 function Cita() {
+    const Agregar = () =>{
+        alert("Se agrego correctamente") //Para simular que la cita se a agregado correctamente
+    }
+
     return (
         <>
             <Navbar />
@@ -14,87 +21,23 @@ function Cita() {
                         <h1 className="text-4xl mb-4 text-black bg-lime-200 p-2 mt-4 w-[25%] rounded-lg" style={{ position: 'absolute', top: '50px', right: '100px' }}>
                             Tus próximas citas
                         </h1>
-                        <table className="table" style={{ position: 'absolute', top: '200px', right: '100px', width: '500px', height: '20px' }}>
-                            <thead>
-                                <tr>
-                                    <th className='text-black' scope="col">Fecha</th>
-                                    <th className='text-black' scope="col">Hora</th>
-                                    <th className='text-black' scope="col">Paciente</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td className='text-black'>30 de febrero</td>
-                                    <td className='text-black'>25:00</td>
-                                    <td className='text-black'>Andrea</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div className="table" style={{ position: 'absolute', top: '200px', right: '100px', width: '500px', height: '20px' }}>
+                            <h1 className="text-2xl text-indigo-500 font-semibold text-center">Agrega una cita</h1>
+                            <Datepicker
+                                controls={['calendar', 'time']}
+                                touchUi={true}
+                            />
+                            <button className="bg-purple-600 p-2 rounded-md hover:bg-purple-500" onClick={Agregar}>Confirmar Cita</button>
+                        </div>
                         <h1 className="text-4xl font-bold mb-4 text-black p-2 mt-5 w-[19%] rounded-lg items-r" style={{ position: 'absolute', top: '70px', left: '500px' }}>
-                            Abril
+                            Calendar
                         </h1>
-                        <table className="table" style={{ position: 'absolute', left: '90px', top: '200px', width: '50%', height: '300px' }}>
-                            <thead className="thead-dark">
-                                <tr>
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
-                                    <th scope="col">Handle</th>
-                                    <th scope="col">Handle</th>
-                                    <th scope="col">Handle</th>
-                                    <th scope="col">Handle</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div style={{ position: 'absolute', right: '58%', top: '200px', width: '24%', height: '300px' }}>
+                            <Datepicker
+                                controls={['calendar', 'time']}
+                                display="inline"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
