@@ -10,6 +10,7 @@ import InfoPaciente from '../pages/InfoPaciente'
 import Configuracion from "../pages/Configuracion";
 import Pacientes from "../pages/Pacientes"
 
+
 export const rutas = createBrowserRouter([
   {
     path: "/",
@@ -50,5 +51,6 @@ export const rutas = createBrowserRouter([
   {
     path: "/Pacientes",
     element: <Pacientes /> 
-  }
+  },
+
 ]);
