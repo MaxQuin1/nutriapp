@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import NavDash from "../components/NavDash";
+import { Link } from "react-router-dom";
 
 function MiPerfil() {
   return (
@@ -8,9 +9,9 @@ function MiPerfil() {
       <Navbar />
       <NavDash />
       <div className="h-screen bg-cover bg-center relative">
-        <button className="absolute top-12 right-4 bg-green-500 p-2 rounded-lg">
-          Back
-        </button>
+        <Link to="/home">
+        <button className="absolute top-12 right-4 bg-green-500 p-2 rounded-lg hover:bg-green-400">Back</button>
+        </Link>
         <div className="flex items-center justify-center h-full">
           <div className="max-w-md w-full rounded-lg p-6 bg-white shadow-lg">
             <h1 className="text-5xl font-bold mb-4">Datos de Cuenta</h1>
@@ -30,9 +31,10 @@ function MiPerfil() {
               <h1 className="p-2">Ingrese un Número de Teléfono</h1>
               <input className="w-full border rounded-lg p-2" />
             </div>
-            <button className="bg-yellow-200 p-2 text-center rounded-lg">
-              Guardar Cambios
-            </button>
+            
+            <button className="bg-yellow-200 p-2 text-center rounded-lg hover:bg-yellow-100">Guardar Cambios</button>
+            
+            
           </div>
         </div>
       </div>
