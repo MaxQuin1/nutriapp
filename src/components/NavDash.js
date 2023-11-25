@@ -25,7 +25,7 @@ function NavDash() {
             <li className="flex items-center">
               <BsPersonCircle size="3rem" />
               <div className="ml-2">
-                <a href="/configuracion" className="w-36 md:w-48 lg:w-60 xl:w-72">Nombre usuario</a>
+                <a href="/configuracion" className="w-36 md:w-48 lg:w-60 xl:w-72 font-bold">Maximo</a>
                 <br/>
                 <a href="/configuracion" className="w-36 md:w-48 lg:w-60 xl:w-72">Cuenta local</a>
               </div>
