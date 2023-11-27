@@ -14,6 +14,7 @@ export default function Login() {
       contrasena: password,
     });
     if(response.data.status){
+      // console.log(response.data.respuesta.tipo_usuario)
       window.location.href = "/home";
     } else{
       console.log('Prueba con otro correo o contraseña')
