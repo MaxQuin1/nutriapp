@@ -31,12 +31,12 @@ function Tareas() {
               </a>
             </div>
             </Link>
-            <Link to='/chat'>
+            {/* <Link to='/chat'>
             <div className="text-center flex flex-col items-center">
               <BsFillChatDotsFill size="4rem" />
               <p className="text-2xl">Chat</p>
             </div>
-            </Link>
+            </Link> */}
             <Link to='/pagos'>
             <div className="text-center flex flex-col items-center">
               <BsCashCoin size="4rem" />
