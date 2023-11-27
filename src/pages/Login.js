@@ -13,11 +13,14 @@ export default function Login() {
       correo_electronico: email,
       contrasena: password,
     });
-    if(response.data.status){
-      // console.log(response.data.respuesta.tipo_usuario)
+    if (response.data.status) {
+      localStorage.setItem(
+        "tipo_usuario",
+        response.data.respuesta.tipo_usuario
+      );
       window.location.href = "/home";
-    } else{
-      console.log('Prueba con otro correo o contraseña')
+    } else {
+      console.log("Prueba con otro correo o contraseña");
     }
   };
 
@@ -53,12 +56,12 @@ export default function Login() {
               </div>
               <div className="text-center">
                 {/* <Link to="/home"> */}
-                  <button
-                    className="w-full p-3 bg-amber-200 text-white rounded-lg hover:bg-amber-400"
-                    onClick={Login}
-                  >
-                    Iniciar sesión
-                  </button>
+                <button
+                  className="w-full p-3 bg-amber-200 text-white rounded-lg hover:bg-amber-400"
+                  onClick={Login}
+                >
+                  Iniciar sesión
+                </button>
                 {/* </Link> */}
               </div>
             </form>
