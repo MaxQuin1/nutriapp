@@ -12,19 +12,19 @@ function NavDashChat() {
                     <div className="h-full px-2 py-2 overflow-y-auto bg-lime-100">
                         <ul className="space-y-2 font-medium">
                             <li className="flex items-center">
-                                <button className="mt-5 p-2 rounded-full bg-purple-300">Paciente 1</button>
+                                <button className="mt-5 p-2 rounded-full bg-purple-300">Andrea</button>
                             </li>
                             <li className="flex items-center">
-                                <button className="p-2 rounded-full bg-purple-300">Paciente 2</button>
+                                <button className="p-2 rounded-full bg-purple-300">Ricardo</button>
                             </li>
                             <li className="flex items-center">
-                                <button className="p-2 rounded-full bg-purple-300">Paciente 3</button>
+                                <button className="p-2 rounded-full bg-purple-300">Maximiliano</button>
                             </li>
                             <li className="flex items-center">
-                                <button className="p-2 rounded-full bg-purple-300">Paciente 4</button>
+                                <button className="p-2 rounded-full bg-purple-300">Roberto</button>
                             </li>
                             <li className="flex items-center">
-                                <button className="p-2 rounded-full bg-purple-300">Paciente 5</button>
+                                <button className="p-2 rounded-full bg-purple-300">Angel</button>
                             </li>
                             
                         </ul>
