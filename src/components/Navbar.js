@@ -29,16 +29,16 @@ export default function Navbar() {
             <li>
               <a href="/Pacientes">Mis pacientes</a>
             </li>
-            <Link to="/chat">
+            {/* <Link to="/chat">
             <li>
               <BsFillChatDotsFill size="2rem" />
             </li>
-            </Link>
-            <Link to="/configuracion">
+            </Link> */}
+            {/* <Link to="/configuracion">
             <li>
               <GrConfigure size="2rem" />
             </li>
-            </Link>
+            </Link> */}
             <Link to="/miperfil">
             <li>
               <BsPersonCircle size="2rem" />

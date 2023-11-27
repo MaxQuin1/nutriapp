@@ -1,6 +1,4 @@
 import React from 'react'
-import { BsPersonCircle } from "react-icons/bs";
-import { Link } from "react-router-dom";
 
 function NavDashChat() {
     return (

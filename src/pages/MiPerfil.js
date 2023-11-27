@@ -30,11 +30,8 @@ function MiPerfil() {
             <div className="mb-2">
               <h1 className="p-2">Ingrese un Número de Teléfono</h1>
               <input className="w-full border rounded-lg p-2" />
-            </div>
-            
-            <button className="bg-yellow-200 p-2 text-center rounded-lg hover:bg-yellow-100">Guardar Cambios</button>
-            
-            
+            </div>      
+            <button className="bg-yellow-200 p-2 text-center rounded-lg hover:bg-yellow-100">Guardar Cambios</button>         
           </div>
         </div>
       </div>
