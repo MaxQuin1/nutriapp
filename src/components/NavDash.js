@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { BsPersonCircle } from "react-icons/bs";
-import { Link } from "react-router-dom";
 
 function NavDash() {
   const persona = JSON.parse(localStorage.getItem("usuario"));
@@ -22,17 +21,15 @@ function NavDash() {
             </li>
             <li className="flex items-center">
               <button className="p-2 px-5 rounded-full bg-purple-300">IMC</button>
-            </li>
-            <Link to='/configuracion'>
+            </li>    
             <li className="flex items-center">
               <BsPersonCircle size="3rem" />
               <div className="ml-2 p-2 border rounded bg-lime-300">
-                <a href="/configuracion" className="w-36 md:w-48 lg:w-60 xl:w-72 font-bold">{persona.nombre}</a>
+                <a className="w-36 md:w-48 lg:w-60 xl:w-72 font-bold">{persona.nombre}</a>
                 <br/>
-                <a href="/configuracion" className="w-36 md:w-48 lg:w-60 xl:w-72">Cuenta local</a>
+                <a className="w-36 md:w-48 lg:w-60 xl:w-72">Cuenta local</a>
               </div>
             </li>
-            </Link>
           </ul>
         </div>
       </aside>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { BsPersonCircle } from "react-icons/bs";
-import { Link } from "react-router-dom";
 
 function NavDashInfo() {
   const persona = JSON.parse(localStorage.getItem("usuario"));
@@ -45,11 +44,11 @@ function NavDashInfo() {
                 <li className="flex items-center">
                   <BsPersonCircle size="3rem" />
                   <div className="ml-2 p-2 border rounded bg-lime-300">
-                    <a href="/configuracion" className="w-36 md:w-48 lg:w-60 xl:w-72">
+                    <a className="w-36 md:w-48 lg:w-60 xl:w-72">
                       {persona.nombre}
                     </a>
-                    <br />
-                    <a href="/configuracion" className="w-36 md:w-48 lg:w-60 xl:w-72">
+                    <br/>
+                    <a className="w-36 md:w-48 lg:w-60 xl:w-72">
                       Cuenta local
                     </a>
                   </div>
