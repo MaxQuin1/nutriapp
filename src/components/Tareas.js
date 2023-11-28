@@ -10,18 +10,6 @@ import { Link } from "react-router-dom";
 
 function Tareas() {
   const tipo_usuario = localStorage.getItem("tipo_usuario");
-  let contenido;
-
-  if (tipo_usuario !== "Nutricionista") {
-    contenido = (
-      <Link to="/pagos">
-        <div className="text-center flex flex-col items-center">
-          <BsCashCoin size="4rem" />
-          <p className="text-2xl">Pagos</p>
-        </div>
-      </Link>
-    );
-  }
 
   return (
     <>
@@ -51,7 +39,6 @@ function Tareas() {
                   <p className="text-2xl">Chat</p>
                 </div>
               </Link>
-              {contenido}
               <Link to="/infoPaciente">
                 <div className="text-center flex flex-col items-center">
                   <BsFillBarChartLineFill size="4rem" />
