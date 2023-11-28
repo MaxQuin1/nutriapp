@@ -7,9 +7,9 @@ import Cita from '../pages/Cita'
 import Chat from "../pages/Chat";
 import Pagos from '../pages/Pagos'
 import InfoPaciente from '../pages/InfoPaciente'
-import Configuracion from "../pages/Configuracion";
 import Pacientes from "../pages/Pacientes"
-
+import Recetas from "../pages/Recetas"
+import 'boxicons'
 
 export const rutas = createBrowserRouter([
   {
@@ -45,12 +45,11 @@ export const rutas = createBrowserRouter([
     element: <InfoPaciente />
   },
   {
-    path: "/configuracion",
-    element: <Configuracion />
-  },
-  {
     path: "/Pacientes",
     element: <Pacientes /> 
   },
-
+  {
+    path: "/recetas",
+    element: <Recetas />,
+  },
 ]);

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Tareas from "../components/Tareas";
 import "../App.css";
 
 export default function Home() {
+
   return (
     <>
     <div id="mydiv">
