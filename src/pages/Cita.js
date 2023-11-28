@@ -133,7 +133,7 @@ function Cita() {
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                    <h1 className="modal-title fs-5 text-black" id="staticBackdropLabel">
                       Agregar Nueva Cita
                     </h1>
                     <button
@@ -145,7 +145,7 @@ function Cita() {
                   </div>
                   <div class="modal-body">
                     <form>
-                      <p className="p-2 font-semibold">Fecha</p>
+                      <p className="p-2 font-semibold text-black">Fecha</p>
                       <input
                         placeholder="dia/mes/año"
                         onChange={(e) =>
@@ -153,7 +153,7 @@ function Cita() {
                         }
                         className="border p-2 rounded-lg w-[80%]"
                       ></input>
-                      <p className="p-2 font-semibold">Hora</p>
+                      <p className="p-2 font-semibold text-black">Hora</p>
                       <input
                         placeholder="00:00:00"
                         onChange={(e) =>
@@ -161,7 +161,7 @@ function Cita() {
                         }
                         className="border p-2 rounded-lg w-[80%]"
                       ></input>
-                      <p className="p-2 font-semibold">Paciente</p>
+                      <p className="p-2 font-semibold text-black">Paciente</p>
                       <input
                         placeholder="Paciente"
                         onChange={(e) =>

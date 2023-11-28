@@ -10,7 +10,8 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const Login = async () => {
+  const Login = async (e) => {
+    e.preventDefault();
     const response = await axios.post("http://localhost:8082/login", {
       correo_electronico: email,
       contrasena: password,
