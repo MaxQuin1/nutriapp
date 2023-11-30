@@ -1,37 +1,63 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import { Chart } from "react-google-charts";
 import NavDashInfo from "../components/NavDashInfo";
-
-export const data = [
-  ["Meses", "asistidas", "faltas"],
-  ["Enero", 400, 200],
-  ["Febrero", 460, 250],
-  ["Marzo", 1120, 300],
-  ["Abril", 540, 350],
-];
-
-export const options = {
-  chart: {
-    title: "Registro de citas",
-    subtitle: "",
-  },
-};
-
-export const data2 = [
-  ["Task", "Hours per Day"],
-  ["Huevo", 11],
-  ["Brocoli", 2],
-  ["Pollo sin grasas", 2],
-  ["Manzana", 2],
-  ["Ensalada", 7],
-];
-
-export const options2 = {
-  title: "Alimentos mas recomendados",
-};
+import AgregarAlimentos from "../components/AgregarAlimentos";
 
 export default function InfoPaciente() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [userToAdd, setUserToAdd] = useState("");
+  const [users, setUsers] = useState([]);
+
+  const handleOpenModal = () => {
+    console.log('Abriendo modal');
+    setIsModalOpen(true);
+  };
+  
+  const handleCloseModal = () => {
+    console.log('Cerrando modal');
+    setIsModalOpen(false);
+  };
+
+  const handleConfirmAction = () => {
+    if (userToAdd) {
+      setUsers([...users, userToAdd]);
+      setUserToAdd("");
+    }
+    handleCloseModal(); // Cerrar el modal después de confirmar
+  };
+
+  const handleUserInputChange = (e) => {
+    setUserToAdd(e.target.value);
+  };
+
+  const data = [
+    ["Meses", "asistidas", "faltas"],
+    ["Enero", 400, 200],
+    ["Febrero", 460, 250],
+    ["Marzo", 1120, 300],
+    ["Abril", 540, 350],
+  ];
+
+  const options = {
+    chart: {
+      title: "Registro de citas",
+      subtitle: "",
+    },
+  };
+
+  const data2 = [
+    ["Task", "Hours per Day"],
+    ["Huevo", 11],
+    ["Brocoli", 2],
+    ["Pollo sin grasas", 2],
+    ["Manzana", 2],
+    ["Ensalada", 7],
+  ];
+
+  const options2 = {
+    title: "Alimentos más recomendados",
+  };
 
   return (
     <>
@@ -39,11 +65,21 @@ export default function InfoPaciente() {
       <NavDashInfo></NavDashInfo>
       <h1 className="text-center text-3xl p-2">IMC</h1>
       <button
-        style={{ position: "absolute", top: "115px", right: "90px" }}
-        className="bg-lime-500 p-2 rounded-lg hover:bg-lime-400"
+        onClick={handleOpenModal}
+        className="bg-sky-900 ml-1 text-white px-1 py-1 my-1 rounded-xl text-xs"
       >
         Editar
       </button>
+      <AgregarAlimentos
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        onConfirm={handleConfirmAction}
+        message="Agrega el alimento"
+        inputPlaceholder="Alimento"
+        inputValue={userToAdd}
+        onInputChange={handleUserInputChange}
+      />
+
       <div className="absolute right-[40%]">
         <Chart
           chartType="Bar"
