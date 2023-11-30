@@ -43,9 +43,8 @@ function Registro() {
           nombre_usuario: nombre,
           correo_electronico: correo,
           contrasena: contrasena,
-          tipo_usuario: tipo,
         });
-
+        console.log(response);
         if (response.data) {
           window.location.href = "/";
           alert("Cuenta creada correctamente");
