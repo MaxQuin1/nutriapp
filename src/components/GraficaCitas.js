@@ -36,7 +36,6 @@ export default function GraficaCitas() {
   const citasDiciembre = [];
   const citasEnero = [];
 
-  // Filtrar citas para noviembre y diciembre
   const citasAsignadas = citasConMes.map((cita) => {
     if (cita.mes === 9) {
       citasOctubre.push(cita);
@@ -44,7 +43,7 @@ export default function GraficaCitas() {
       citasNoviembre.push(cita);
     } else if (cita.mes === 11) {
       citasDiciembre.push(cita);
-    }else if (cita.mes === 1) {
+    }else if (cita.mes === 0) {
       citasEnero.push(cita);
     }
     return cita;

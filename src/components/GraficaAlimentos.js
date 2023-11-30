@@ -1,34 +1,47 @@
 import React, { useState, useEffect } from "react";
 import { Chart } from "react-google-charts";
+import axios from "axios";
 
 export default function GraficaAlimentos() {
-  const tipo = localStorage.getItem('tipo_usuario')
+  const tipo = localStorage.getItem("tipo_usuario");
+  const [comidas, setComidas] = useState([]);
 
-  const data2 = [
-    ["Task", "Hours per Day"],
-    ["Huevo", 11],
-    ["Brocoli", 2],
-    ["Pollo sin grasas", 2],
-    ["Manzana", 2],
-    ["Ensalada", 7],
-  ];
+  useEffect(() => {
+    axios
+      .get("http://localhost:8082/comidas")
+      .then((respuesta) => {
+        setComidas(respuesta.data.listacomidas);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
-  const options2 = {
-    title: "Alimentos mas recomendados",
-  };
+  let contenido;
 
-  let contenido
-
-  if(tipo === 'Nutricionista'){
+  if (tipo === "Nutricionista") {
     contenido = (
-        <button
+      <button
         style={{ position: "absolute", top: "115px", right: "90px" }}
         className="bg-lime-300 p-2 rounded-lg hover:bg-lime-500"
       >
         Editar
       </button>
-    )
+    );
   }
+
+  const primerComida =
+    comidas.length > 0
+      ? [comidas[0].nombre_alimento, comidas[0].cantidad_dias]
+      : [];
+  const segundaComida =
+    comidas.length > 1
+      ? [comidas[1].nombre_alimento, comidas[1].cantidad_dias]
+      : [];
+
+  const data2 = [["Task", "Hours per Day"], [...primerComida], [...segundaComida]];
+
+  const options2 = {
+    title: "Alimentos más recomendados",
+  };
 
   return (
     <div>
