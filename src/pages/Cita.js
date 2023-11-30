@@ -29,7 +29,11 @@ function Cita() {
     axios
       .get("http://localhost:8082/citas")
       .then((respuesta) => {
-        setCitas(respuesta.data.listacitas);
+        const response = respuesta.data.listacitas;
+        const citasDisponibles = response.filter((cita) => {
+          return cita.status === null;
+        });
+        setCitas(citasDisponibles);
       })
       .catch((error) => console.log(error));
   }, []);

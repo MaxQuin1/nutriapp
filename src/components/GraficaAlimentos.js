@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Chart } from "react-google-charts";
 
 export default function GraficaAlimentos() {
-  // const persona = JSON.parse(localStorage.getItem("usuario"));
   const tipo = localStorage.getItem('tipo_usuario')
-  // const [eleccionLocal, setEleccionLocal] = useState("");
 
   const data2 = [
     ["Task", "Hours per Day"],
