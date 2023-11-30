@@ -32,18 +32,17 @@ export default function Recetas() {
     }
   };
 
-  useEffect(() => {
-    return () => {
-      // Limpiar recursos, si es necesario
-    };
-  }, []);
+  const redirectToGoogle = (resultado) => {
+    const googleSearchUrl = `https://www.google.com/search?q=${resultado}`;
+    window.open(googleSearchUrl, "_blank");
+  };
 
   return (
     <>
       <Navbar />
       <div className="bg-lime-100 min-h-screen flex flex-col items-center justify-center p-8">
         <div className="flex flex-col items-center mb-4">
-          <label className="text-2xl font-bold mb-2">Busca algo</label>
+          <label className="text-2xl font-bold mb-2">Busca el platillo que nescecitas</label>
           <div className="flex items-center">
             <input
               className="p-3 rounded border border-gray-300 focus:outline-none focus:border-green-500 mr-2"
@@ -64,12 +63,13 @@ export default function Recetas() {
         </div>
         <div className="flex flex-wrap justify-center">
           {resultados.map((resultado, index) => (
-            <p
+            <div
               key={index}
-              className="m-2 p-2 bg-white shadow-md rounded-md text-gray-800"
+              className="m-2 p-2 bg-white shadow-md rounded-md text-gray-800 cursor-pointer"
+              onClick={() => redirectToGoogle(resultado)}
             >
               {resultado}
-            </p>
+            </div>
           ))}
         </div>
       </div>
