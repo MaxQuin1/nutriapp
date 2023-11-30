@@ -146,12 +146,12 @@ function Cita() {
                   <div class="modal-body">
                     <form>
                       <p className="p-2 font-semibold text-black">Fecha</p>
-                      <input
+                      <input 
                         placeholder="dia/mes/año"
                         onChange={(e) =>
                           setValues({ ...values, Fecha: e.target.value })
                         }
-                        className="border p-2 rounded-lg w-[80%]"
+                        className="border p-2 rounded-lg w-[80%] text-black"
                       ></input>
                       <p className="p-2 font-semibold text-black">Hora</p>
                       <input
@@ -159,7 +159,7 @@ function Cita() {
                         onChange={(e) =>
                           setValues({ ...values, Hora: e.target.value })
                         }
-                        className="border p-2 rounded-lg w-[80%]"
+                        className="border p-2 rounded-lg w-[80%] text-black"
                       ></input>
                       <p className="p-2 font-semibold text-black">Paciente</p>
                       <input
@@ -167,7 +167,7 @@ function Cita() {
                         onChange={(e) =>
                           setValues({ ...values, Paciente: e.target.value })
                         }
-                        className="border p-2 rounded-lg w-[80%]"
+                        className="border p-2 rounded-lg w-[80%] text-black"
                       ></input>
                       <br></br>
                       <button
