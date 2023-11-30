@@ -17,8 +17,18 @@ function MiPerfil() {
         const response = await axios.get(
           `http://localhost:8082/usuarios/${id}`
         );
+
         if (response.data && response.data.usuario) {
           const userData = response.data.usuario;
+          if (
+            userData.nombre !== nombre ||
+            userData.correo !== correo ||
+            userData.contrasena !== contrasena
+          ) {
+            setNombre(userData.nombre);
+            setCorreo(userData.correo);
+            setContrasena(userData.contrasena);
+          }
 
           const updatedUserData = {
             ...persona,
@@ -27,6 +37,12 @@ function MiPerfil() {
             contrasena: userData.contrasena,
           };
           localStorage.setItem("usuario", JSON.stringify(updatedUserData));
+          setNombre("");
+          setCorreo("");
+          setContrasena("");
+        }
+        else{
+          alert('No se detectaron cambios')
         }
       } catch (error) {
         console.error("Error en la solicitud:", error);
@@ -35,10 +51,9 @@ function MiPerfil() {
     };
 
     fetchData();
-  }, [id, nombre, correo, contrasena]);
+  }, [id]);
 
   const Actualizar = async () => {
-    console.log("Botón de Guardar Cambios clickeado");
     await axios
       .put(`http://localhost:8082/usuarios/${id}`, {
         nombre: nombre,
