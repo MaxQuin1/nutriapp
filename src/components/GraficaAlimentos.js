@@ -34,6 +34,9 @@ export default function GraficaAlimentos() {
 
   return (
     <div>
+    <div className="bg-green-200 w-full ">
+    <button className="bg-green-500 text-2xl m-6 justify-center r-50 w-10"> Editar </button>
+    </div>
       {contenido}
       <div className="absolute right-[33%] border top-40">
         <Chart
