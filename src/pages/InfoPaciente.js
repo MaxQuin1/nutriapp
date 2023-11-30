@@ -65,11 +65,11 @@ export default function InfoPaciente() {
       <NavDashInfo></NavDashInfo>
       <h1 className="text-center text-3xl p-2">IMC</h1>
       <button
-        onClick={handleOpenModal}
-        className="bg-sky-900 ml-1 text-white px-1 py-1 my-1 rounded-xl text-xs"
-      >
-        Editar
-      </button>
+  onClick={handleOpenModal}
+  className=""
+>
+  Editar
+</button>
       <AgregarAlimentos
         isOpen={isModalOpen}
         onClose={handleCloseModal}
