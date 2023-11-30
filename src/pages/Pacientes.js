@@ -62,15 +62,15 @@ function Pacientes() {
             Generar Token
           </button>
         </div>
-        <div className="flex relative bg-lime-100 p-7 w-[30%] rounded">
           {nuevoToken ? (
             <>
+            <div className="flex relative bg-red-100 p-2 w-[30%] rounded">
               <p>Nuevo token:</p>
-              <p className="ml-4 bg-red-200 rounded p-2">{nuevoToken}</p>
+              <p className="ml-4 bg-red-400 rounded p-2">{nuevoToken}</p>
+              </div>
             </>
           ) : null}
-        </div>
-        <div className="h-[60vh] flex flex-col items-center p-2 bg-lime-100 overflow-y-auto">
+        <div className="h-[73vh] flex flex-col items-center p-2 bg-lime-100 overflow-y-auto">
           {pacientes && pacientes.length > 0 ? (
             pacientes.map((paciente, index) =>
               cardPerson({

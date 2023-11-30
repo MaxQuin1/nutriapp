@@ -45,15 +45,19 @@ function Cita() {
   };
 
   const confirmarCita = async (id) => {
-    const response = await axios.delete(`http://localhost:8082/citas/${id}`);
-
-    if (response.status === 200) {
-      setCitas(citas.filter((cita) => cita.id_cita !== id));
-      alert("La cita se confirmo");
-    } else {
-      alert("Ocurrió un error");
+    try {
+      const response = await axios.put(`http://localhost:8082/citas/${id}`);
+      if (response.status === 200) {
+        alert("La cita se confirmó");
+      } else {
+        alert("Ocurrió un error al confirmar la cita");
+      }
+    } catch (error) {
+      console.error("Error en la solicitud:", error);
+      alert("Ocurrió un error inesperado");
     }
   };
+  
 
   let contenido;
   if (tipo_usuario === "Nutricionista") {

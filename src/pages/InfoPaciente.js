@@ -1,43 +1,38 @@
 import React, { useState, useEffect } from "react";
-import { Chart } from "react-google-charts";
 import Navbar from "../components/Navbar";
 import { BsPersonCircle } from "react-icons/bs";
-
-export const data = [
-  ["Meses", "asistidas", "faltas"],
-  ["Enero", 400, 200],
-  ["Febrero", 460, 250],
-  ["Marzo", 1120, 300],
-  ["Abril", 540, 350],
-];
-
-export const options = {
-  chart: {
-    title: "Registro de citas",
-    subtitle: "",
-  },
-};
-
-export const data2 = [
-  ["Task", "Hours per Day"],
-  ["Huevo", 11],
-  ["Brocoli", 2],
-  ["Pollo sin grasas", 2],
-  ["Manzana", 2],
-  ["Ensalada", 7],
-];
-
-export const options2 = {
-  title: "Alimentos mas recomendados",
-};
+import GraficaImc from '../components/GraficaImc'
+import GraficaCitas from "../components/GraficaCitas";
+import GraficaAlimentos from "../components/GraficaAlimentos";
 
 export default function InfoPaciente() {
   const persona = JSON.parse(localStorage.getItem("usuario"));
-  const [eleccionLocal, setEleccionLocal] = useState("");
+  const [eleccionLocal, setEleccionLocal] = useState("IMC");
+  let contenido
+
+  if(eleccionLocal === 'IMC'){
+    contenido = (
+      <>
+      <GraficaImc/>
+      </>
+    )
+  } else if (eleccionLocal === 'Citas'){
+    contenido = (
+      <>
+      <GraficaCitas/>
+      </>
+    )
+  } else{
+    contenido = (
+      <>
+      <GraficaAlimentos/>
+      </>
+    )
+  }
 
   return (
     <>
-      <Navbar></Navbar>
+      <Navbar/>
       <div className="fixed container">
         <aside
           id="sidebar-multi-level-sidebar"
@@ -85,31 +80,7 @@ export default function InfoPaciente() {
         </aside>
       </div>
       <h1 className="text-center text-3xl p-2">{eleccionLocal}</h1>
-      <button
-        style={{ position: "absolute", top: "115px", right: "90px" }}
-        className="bg-lime-300 p-2 rounded-lg hover:bg-lime-500"
-      >
-        Editar
-      </button>
-      <div className="absolute right-[40%]">
-        <Chart
-          chartType="Bar"
-          width="100%"
-          height="400px"
-          data={data}
-          options={options}
-        />
-      </div>
-
-      <div className="absolute right-[12%]">
-        <Chart
-          chartType="PieChart"
-          data={data2}
-          options={options2}
-          width={"100%"}
-          height={"400px"}
-        />
-      </div>
+      {contenido}
     </>
   );
 }
