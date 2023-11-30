@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Navbar from "../components/Navbar";
 import Tareas from "../components/Tareas";
 import "../App.css";
@@ -17,7 +17,7 @@ export default function Home() {
             Bienvenido
           </h1>
           </div>
-          <Tareas></Tareas>
+          <Tareas/>
         </div>
       </div>
       </div>
