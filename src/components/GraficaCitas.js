@@ -22,7 +22,6 @@ export default function GraficaCitas() {
       .catch((error) => console.log(error));
   }, []);
 
-  // Mapear citas y agregar la propiedad mes
   const citasConMes = citas.map(cita => {
     const resultado = calcularMes(cita);
     return {
@@ -32,30 +31,41 @@ export default function GraficaCitas() {
   });
 
   // Inicializar arrays
+  const citasOctubre = [];
   const citasNoviembre = [];
   const citasDiciembre = [];
+  const citasEnero = [];
 
   // Filtrar citas para noviembre y diciembre
   const citasAsignadas = citasConMes.map((cita) => {
-    if (cita.mes === 10) {
+    if (cita.mes === 9) {
+      citasOctubre.push(cita);
+    } else if (cita.mes === 10) {
       citasNoviembre.push(cita);
     } else if (cita.mes === 11) {
       citasDiciembre.push(cita);
+    }else if (cita.mes === 1) {
+      citasEnero.push(cita);
     }
     return cita;
   });
 
-  // Filtrar citas confirmadas y no confirmadas para noviembre y diciembre
+  const citasConfirmadasOctubre = citasOctubre.filter((cita) => cita.status === 1);
   const citasConfirmadasNoviembre = citasNoviembre.filter((cita) => cita.status === 1);
   const citasConfirmadasDiciembre = citasDiciembre.filter((cita) => cita.status === 1);
+  const citasConfirmadasEnero = citasEnero.filter((cita) => cita.status === 1);
+  const citasNoConfirmadasOctubre = citasOctubre.filter((cita) => cita.status === null);
   const citasNoConfirmadasNoviembre = citasNoviembre.filter((cita) => cita.status === null);
   const citasNoConfirmadasDiciembre = citasDiciembre.filter((cita) => cita.status === null);
+  const citasNoConfirmadasEnero = citasEnero.filter((cita) => cita.status === null);
 
   // Datos para el gráfico
   const data = [
     ["Meses", "Asistidas", "Faltas"],
+    ["Octubre", citasConfirmadasOctubre.length, citasNoConfirmadasOctubre.length],
     ["Noviembre", citasConfirmadasNoviembre.length, citasNoConfirmadasNoviembre.length],
     ["Diciembre", citasConfirmadasDiciembre.length, citasNoConfirmadasDiciembre.length],
+    ["Enero", citasConfirmadasEnero.length, citasNoConfirmadasEnero.length],
   ];
 
   const options = {

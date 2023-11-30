@@ -72,8 +72,8 @@ function Cita() {
           style={{
             position: "absolute",
             top: "120px",
-            right: "100px",
-            width: "500px",
+            right: "70px",
+            width: "450px",
           }}
         >
           <thead className="bg-green-500 text-white">
@@ -113,8 +113,8 @@ function Cita() {
           style={{
             position: "absolute",
             top: "150px",
-            right: "100px",
-            width: "500px",
+            right: "70px",
+            width: "450px",
           }}
         >
           <thead className="bg-green-500 text-white">
@@ -156,8 +156,8 @@ function Cita() {
           className="w-full h-full background-image absolute top-0 left-0 "
           id="mydiv"
         >
-        <div className="text-white relative z-12 ">
-          <div className="left-4 pl-2">
+        <div className="text-white relative">
+          <div className="pl-10 pt-5">
             <h1
               className="text-4xl mb-4 text-black bg-lime-100 p-2 mt-4 w-[25%] rounded-lg"
               style={{ position: "absolute", top: "10px", right: "150px" }}
