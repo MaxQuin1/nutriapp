@@ -1,10 +1,40 @@
 import React, { useState, useEffect } from "react";
 import { Chart } from "react-google-charts";
 import axios from "axios";
+import EditarAlimento from "./EditarAlimento";
 
 export default function GraficaAlimentos() {
   const tipo = localStorage.getItem("tipo_usuario");
+  const [pacientes, setPacientes] = useState([]);
+  const [paciente, setPaciente] = useState("");
   const [comidas, setComidas] = useState([]);
+  const [alimento, setAlimento] = useState("");
+  const [dias, setDias] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [userToAdd, setUserToAdd] = useState("");
+  const [users, setUsers] = useState([]);
+
+  const handleOpenModal = () => {
+    console.log("Abriendo modal");
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    console.log("Cerrando modal");
+    setIsModalOpen(false);
+  };
+
+  const handleConfirmAction = () => {
+    if (userToAdd) {
+      setUsers([...users, userToAdd]);
+      setUserToAdd("");
+    }
+    handleCloseModal();
+  };
+
+  const handleUserInputChange = (e) => {
+    setUserToAdd(e.target.value);
+  };
 
   useEffect(() => {
     axios
@@ -13,18 +43,137 @@ export default function GraficaAlimentos() {
         setComidas(respuesta.data.listacomidas);
       })
       .catch((error) => console.log(error));
+
+    axios
+      .get("http://localhost:8082/pacientes")
+      .then((respuesta) => {
+        setPacientes(respuesta.data.listapacientes);
+      })
+      .catch((error) => console.log(error));
   }, []);
+
+  const agregarAlimento = async () => {
+    try {
+      const respuesta = await axios.post("http://localhost:8082/comidas", {
+        id_paciente: paciente.id_paciente,
+        nombre_alimento: alimento,
+        cantidad_dias: dias,
+      });
+      setComidas(respuesta.data.listacomidas);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const eliminarAlimento = async (id) => {
+    if (comidas.length >= 3) {
+      try {
+        const respuesta = await axios.delete(
+          `http://localhost:8082/comidas/${id}`
+        );
+        console.log(respuesta.data);
+        alert("Alimento eliminado");
+      } catch (error) {
+        console.error("Error al eliminar el alimento:", error);
+        alert(
+          "Hubo un error al intentar eliminar el alimento. Por favor, inténtelo de nuevo."
+        );
+      }
+    } else {
+      alert("No se puede eliminar si solo quedan dos datos alimentos");
+      return;
+    }
+  };
 
   let contenido;
 
   if (tipo === "Nutricionista") {
     contenido = (
-      <button
-        style={{ position: "absolute", top: "115px", right: "90px" }}
-        className="bg-lime-300 p-2 rounded-lg hover:bg-lime-500"
+      <div
+        className="flex items-center justify-center h-full"
+        style={{ position: "absolute", top: "60px", right: "50px" }}
       >
-        Editar
-      </button>
+        <div className="max-w-md w-full rounded-lg p-6 bg-white shadow-lg">
+          <h1 className="text-5xl font-bold mb-4">Gestion de Alimentos</h1>
+          <div className="mb-2">
+            <label className="p-2 mb-2">Alimento</label>
+            <button
+              className="bg-purple-300 ml-10 p-2 text-center rounded-lg hover:bg-purple-400"
+              onClick={agregarAlimento}
+            >
+              Agregar
+            </button>
+            <div className="flex">
+              <div className="flex-1">
+                <input
+                  className="w-full border rounded-lg p-2"
+                  placeholder="Alimento"
+                  type="text"
+                  value={alimento}
+                  onChange={(e) => setAlimento(e.target.value)}
+                />
+              </div>
+              <div className="flex-1">
+                <input
+                  className="w-full border rounded-lg p-2"
+                  placeholder="Dias"
+                  type="number"
+                  value={dias}
+                  onChange={(e) => setDias(e.target.value)}
+                />
+              </div>
+              <div className="flex-1">
+                <select
+                  value={paciente}
+                  onChange={(e) => setPaciente(e.target.value)}
+                  className="w-full border rounded-lg p-2"
+                  placeholder="Paciente"
+                >
+                  {pacientes.map((paciente) => (
+                    <option
+                      key={paciente.id_paciente}
+                      value={paciente.id_paciente}
+                    >
+                      {paciente.nombre_paciente}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <h2 className="p-2">Alimentos</h2>
+            {comidas.map((comida) => (
+              <div
+                className="flex items-center space-x-4 p-2 border rounded bg-gray-200 hover:bg-gray-300"
+                key={comida.id_alimento}
+              >
+                <p className="flex-1">{comida.nombre_alimento}</p>
+                <button
+                  className="bg-gray-400 p-2 rounded-lg hover:bg-gray-500"
+                  onClick={handleOpenModal}
+                >
+                  Actualizar
+                </button>
+                <EditarAlimento
+                  id={comida.id_alimento}
+                  isOpen={isModalOpen}
+                  onClose={handleCloseModal}
+                  onConfirm={handleConfirmAction}
+                  message={comida.nombre_alimento}
+                  inputPlaceholder={comida.nombre_alimento}
+                  inputValue={userToAdd}
+                  onInputChange={handleUserInputChange}
+                />
+                <button
+                  className="bg-gray-400 p-2 rounded-lg hover:bg-gray-500"
+                  onClick={() => eliminarAlimento(comida.id_alimento)}
+                >
+                  Eliminar
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     );
   }
 
@@ -36,21 +185,35 @@ export default function GraficaAlimentos() {
     comidas.length > 1
       ? [comidas[1].nombre_alimento, comidas[1].cantidad_dias]
       : [];
+  const terceraComida =
+    comidas.length > 2
+      ? [comidas[2].nombre_alimento, comidas[2].cantidad_dias]
+      : [];
+  const cuartaComida =
+    comidas.length > 3
+      ? [comidas[3].nombre_alimento, comidas[3].cantidad_dias]
+      : [];
 
-  const data2 = [["Task", "Hours per Day"], [...primerComida], [...segundaComida]];
+  const data = [
+    ["Task", "Hours per Day"],
+    ...(primerComida && primerComida.length > 0 ? [primerComida] : []),
+    ...(segundaComida && segundaComida.length > 0 ? [segundaComida] : []),
+    ...(terceraComida && terceraComida.length > 0 ? [terceraComida] : []),
+    ...(cuartaComida && cuartaComida.length > 0 ? [cuartaComida] : []),
+  ];
 
-  const options2 = {
+  const options = {
     title: "Alimentos más recomendados",
   };
 
   return (
     <div>
       {contenido}
-      <div className="absolute right-[33%] border top-40">
+      <div className="absolute left-[28%] border top-40">
         <Chart
           chartType="PieChart"
-          data={data2}
-          options={options2}
+          data={data}
+          options={options}
           width={"100%"}
           height={"400px"}
         />

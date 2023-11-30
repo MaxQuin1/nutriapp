@@ -7,7 +7,7 @@ import GraficaAlimentos from "../components/GraficaAlimentos";
 
 export default function InfoPaciente() {
   const persona = JSON.parse(localStorage.getItem("usuario"));
-  const [eleccionLocal, setEleccionLocal] = useState("IMC");
+  const [eleccionLocal, setEleccionLocal] = useState("Citas");
   let contenido
 
   if(eleccionLocal === 'IMC'){
