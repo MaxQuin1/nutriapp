@@ -3,19 +3,27 @@ import Navbar from "../components/Navbar";
 import "../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
-import Fullcalendar from "@fullcalendar/react";
+import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import axios from "axios";
 
 function Cita() {
+  const tipo_usuario = localStorage.getItem("tipo_usuario");
+  const usuario = JSON.parse(localStorage.getItem("usuario"));
+
   const [citas, setCitas] = useState([]);
   const [values, setValues] = useState({
     Fecha: "",
     Hora: "",
-    Paciente: "",
+    Paciente: usuario.nombre,
   });
+
+  const eventos = citas.map((cita) => ({
+    title: "Cita",
+    start: new Date(cita.Fecha),
+  }));
 
   useEffect(() => {
     axios
@@ -26,9 +34,9 @@ function Cita() {
       .catch((error) => console.log(error));
   }, []);
 
-  const crearCita = (e) => {
+  const crearCita = async (e) => {
     e.preventDefault();
-    axios
+    await axios
       .post("http://localhost:8082/citas", values)
       .then((res) => {
         console.log(res);
@@ -37,79 +45,124 @@ function Cita() {
   };
 
   const confirmarCita = async (id) => {
-    const response = await axios.delete(`http://localhost:8082/citas/${id}`);
-
-    if (response.status === 200) {
-      setCitas(citas.filter((cita) => cita.id_cita !== id));
-      alert("la cita se confirmo");
-    } else {
-      alert("Ocurrió un error");
+    try {
+      const response = await axios.put(`http://localhost:8082/citas/${id}`);
+      if (response.status === 200) {
+        alert("La cita se confirmó");
+      } else {
+        alert("Ocurrió un error al confirmar la cita");
+      }
+    } catch (error) {
+      console.error("Error en la solicitud:", error);
+      alert("Ocurrió un error inesperado");
     }
   };
+  
+
+  let contenido;
+  if (tipo_usuario === "Nutricionista") {
+    contenido = (
+      <>
+        <table
+          className="table table-striped table-bordered shadow"
+          style={{
+            position: "absolute",
+            top: "120px",
+            right: "100px",
+            width: "500px",
+          }}
+        >
+          <thead className="bg-green-500 text-white">
+            <tr>
+              <th scope="col">Fecha</th>
+              <th scope="col">Hora</th>
+              <th scope="col">Paciente</th>
+              <th scope="col">Confirmación</th>
+            </tr>
+          </thead>
+          <tbody>
+            {citas.map((cita, index) => (
+              <tr key={index}>
+                <td>{cita.Fecha}</td>
+                <td>{cita.Hora}</td>
+                <td>{cita.Paciente}</td>
+                <td>
+                  <button
+                    type="button"
+                    className="bg-green-400 p-2 text-white rounded-lg hover:bg-green-500"
+                    onClick={() => confirmarCita(cita.id_cita)}
+                  >
+                    Confirmar
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </>
+    );
+  } else {
+    contenido = (
+      <>
+        <table
+          className="table table-striped table-bordered shadow"
+          style={{
+            position: "absolute",
+            top: "150px",
+            right: "100px",
+            width: "500px",
+          }}
+        >
+          <thead className="bg-green-500 text-white">
+            <tr>
+              <th scope="col">Fecha</th>
+              <th scope="col">Hora</th>
+              <th scope="col">Paciente</th>
+            </tr>
+          </thead>
+          <tbody>
+            {citas.map((cita, index) => (
+              <tr key={index}>
+                <td>{cita.Fecha}</td>
+                <td>{cita.Hora}</td>
+                <td>{cita.Paciente}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <div className="absolute right-[21%] top-[100px] h-[20px]">
+          <button
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+            className="bg-purple-400 p-2 text-white rounded-lg hover:bg-purple-500"
+          >
+            Agregar cita
+          </button>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
       <Navbar />
-      <div className="h-screen relative">
+      <div className="h-screen relative ">
         <div
-          className="w-full h-full background-image absolute top-0 left-0"
+          className="w-full h-full background-image absolute top-0 left-0 "
           id="mydiv"
-        ></div>
-        <div className="text-white relative z-12">
+        >
+        <div className="text-white relative z-12 ">
           <div className="left-4 pl-2">
             <h1
               className="text-4xl mb-4 text-black bg-lime-100 p-2 mt-4 w-[25%] rounded-lg"
-              style={{ position: "absolute", top: "50px", right: "100px" }}
+              style={{ position: "absolute", top: "10px", right: "150px" }}
             >
               Tus próximas citas
             </h1>
-            <table
-              className="table table-striped table-bordered shadow"
-              style={{
-                position: "absolute",
-                top: "230px",
-                right: "100px",
-                width: "500px",
-              }}
-            >
-              <thead className="bg-green-500 text-white">
-                <tr>
-                  <th scope="col">Fecha</th>
-                  <th scope="col">Hora</th>
-                  <th scope="col">Paciente</th>
-                  <th scope="col">Confirmación</th>
-                </tr>
-              </thead>
-              <tbody>
-                {citas.map((cita, index) => (
-                  <tr key={index}>
-                    <td>{cita.Fecha}</td>
-                    <td>{cita.Hora}</td>
-                    <td>{cita.Paciente}</td>
-                    <td>
-                      <button
-                        onClick={() => confirmarCita(cita.id_cita)}
-                        className="btn btn-success"
-                      >
-                        Confirmar
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <div className="absolute right-[25%] top-[150px] h-[20px]">
-              <button
-                type="button"
-                data-bs-toggle="modal"
-                data-bs-target="#staticBackdrop"
-                className="bg-purple-400 p-2 text-white rounded-lg hover:bg-purple-500"
-              >
-                Agregar cita
-              </button>
-            </div>
+            {contenido}
             <div className="w-[50%] bg-white text-black p-5 rounded-lg shadow-md">
-              <Fullcalendar
+              <FullCalendar
                 plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                 initialView={"dayGridMonth"}
                 headerToolbar={{
@@ -119,6 +172,7 @@ function Cita() {
                 }}
                 height={"50vh"}
                 className="mt-4"
+                events={eventos}
               />
             </div>
             <div
@@ -133,7 +187,10 @@ function Cita() {
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h1 className="modal-title fs-5 text-black" id="staticBackdropLabel">
+                    <h1
+                      className="modal-title fs-5 text-black"
+                      id="staticBackdropLabel"
+                    >
                       Agregar Nueva Cita
                     </h1>
                     <button
@@ -146,7 +203,8 @@ function Cita() {
                   <div class="modal-body">
                     <form>
                       <p className="p-2 font-semibold text-black">Fecha</p>
-                      <input 
+                      <input
+                        type="date"
                         placeholder="dia/mes/año"
                         onChange={(e) =>
                           setValues({ ...values, Fecha: e.target.value })
@@ -159,17 +217,9 @@ function Cita() {
                         onChange={(e) =>
                           setValues({ ...values, Hora: e.target.value })
                         }
-                        className="border p-2 rounded-lg w-[80%] text-black"
+                        className="border p-2 rounded-lg w-[80%] text-black mb-4"
                       ></input>
-                      <p className="p-2 font-semibold text-black">Paciente</p>
-                      <input
-                        placeholder="Paciente"
-                        onChange={(e) =>
-                          setValues({ ...values, Paciente: e.target.value })
-                        }
-                        className="border p-2 rounded-lg w-[80%] text-black"
-                      ></input>
-                      <br></br>
+                      <br />
                       <button
                         onClick={crearCita}
                         type="button"
@@ -192,6 +242,7 @@ function Cita() {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </>
