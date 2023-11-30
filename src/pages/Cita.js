@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import "../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
-import FullCalendar from '@fullcalendar/react';
+import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
@@ -21,7 +21,7 @@ function Cita() {
   });
 
   const eventos = citas.map((cita) => ({
-    title: 'Cita',
+    title: "Cita",
     start: new Date(cita.Fecha),
   }));
 
@@ -104,7 +104,7 @@ function Cita() {
           className="table table-striped table-bordered shadow"
           style={{
             position: "absolute",
-            top: "230px",
+            top: "150px",
             right: "100px",
             width: "500px",
           }}
@@ -126,7 +126,7 @@ function Cita() {
             ))}
           </tbody>
         </table>
-        <div className="absolute right-[25%] top-[150px] h-[20px]">
+        <div className="absolute right-[21%] top-[100px] h-[20px]">
           <button
             type="button"
             data-bs-toggle="modal"
@@ -143,34 +143,34 @@ function Cita() {
   return (
     <>
       <Navbar />
-      <div className="h-screen relative">
+      <div className="h-screen relative ">
         <div
-          className="w-full h-full background-image absolute top-0 left-0"
+          className="w-full h-full background-image absolute top-0 left-0 "
           id="mydiv"
-        ></div>
-        <div className="text-white relative z-12">
+        >
+        <div className="text-white relative z-12 ">
           <div className="left-4 pl-2">
             <h1
               className="text-4xl mb-4 text-black bg-lime-100 p-2 mt-4 w-[25%] rounded-lg"
-              style={{ position: "absolute", top: "50px", right: "100px" }}
+              style={{ position: "absolute", top: "10px", right: "150px" }}
             >
               Tus próximas citas
             </h1>
             {contenido}
             <div className="w-[50%] bg-white text-black p-5 rounded-lg shadow-md">
-      <FullCalendar
-        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-        initialView={'dayGridMonth'}
-        headerToolbar={{
-          start: 'today prev,next',
-          center: 'title',
-          end: 'dayGridMonth,timeGridWeek,timeGridDay',
-        }}
-        height={'50vh'}
-        className="mt-4"
-        events={eventos}
-      />
-    </div>
+              <FullCalendar
+                plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+                initialView={"dayGridMonth"}
+                headerToolbar={{
+                  start: "today prev,next",
+                  center: "title",
+                  end: "dayGridMonth,timeGridWeek,timeGridDay",
+                }}
+                height={"50vh"}
+                className="mt-4"
+                events={eventos}
+              />
+            </div>
             <div
               class="modal fade"
               id="staticBackdrop"
@@ -238,6 +238,7 @@ function Cita() {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </>
