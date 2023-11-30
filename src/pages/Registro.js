@@ -25,6 +25,7 @@ function Registro() {
             correo_electronico: correo,
             contrasena: contrasena,
             tipo_usuario: tipo,
+            token: token,
           });
           if (response.data) {
             window.location.href = "/";
@@ -53,9 +54,10 @@ function Registro() {
         }
       }
     } catch (error) {
+      alert('Error en agregar al usuario verifique los campos')
       console.error("Error al realizar la solicitud:", error.message);
     }
-  };
+  }
 
   return (
     <div className="h-screen bg-cover bg-center" id="mydiv">
@@ -128,7 +130,7 @@ function Registro() {
               <div className="mb-2">
                 <input
                   className="w-full p-2 border rounded-lg"
-                  type="password"
+                  type="text"
                   placeholder="Ingrese su token"
                   value={token}
                   onChange={(e) => {

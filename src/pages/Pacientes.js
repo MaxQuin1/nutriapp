@@ -21,7 +21,7 @@ function Pacientes() {
   };
 
   const crearNuevoToken = () => {
-    const tokenGenerado = generarToken(10);
+    const tokenGenerado = generarToken(8);
     setNuevoToken(tokenGenerado);
     axios.post("http://localhost:8082/token", {
       token: tokenGenerado,
