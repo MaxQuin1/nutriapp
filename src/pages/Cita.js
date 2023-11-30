@@ -63,7 +63,7 @@ function Cita() {
           className="table table-striped table-bordered shadow"
           style={{
             position: "absolute",
-            top: "230px",
+            top: "120px",
             right: "100px",
             width: "500px",
           }}
