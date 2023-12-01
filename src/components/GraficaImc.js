@@ -44,11 +44,12 @@ const Modal = ({ isOpen, onClose, onSave }) => {
 
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            Peso:
+            Peso en kilogramos:
           </label>
           <input
             type="number"
             name="peso"
+            placeholder="peso: kg"
             value={nuevosDatos.peso}
             onChange={handleChange}
             className="w-full border p-2 rounded"
@@ -57,11 +58,12 @@ const Modal = ({ isOpen, onClose, onSave }) => {
 
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            Altura:
+            Altura en metros:
           </label>
           <input
             type="number"
             name="altura"
+            placeholder="altura: m"
             value={nuevosDatos.altura}
             onChange={handleChange}
             className="w-full border p-2 rounded"
@@ -148,7 +150,6 @@ const GraficaImc = () => {
   };
 
   const handleSaveModal = (nuevosDatos) => {
-    // Utilizar un índice específico para actualizar el mes correspondiente
     const mesIndex = nuevosDatos.mes;
     setData((prevData) => {
       const newData = [...prevData];
@@ -156,7 +157,7 @@ const GraficaImc = () => {
         mesIndex,
         nuevosDatos.peso,
         nuevosDatos.altura,
-        nuevosDatos.peso * nuevosDatos.altura ** 2,
+        nuevosDatos.peso / nuevosDatos.altura ** 2,
       ];
       return newData;
     });
