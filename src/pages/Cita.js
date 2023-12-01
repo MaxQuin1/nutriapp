@@ -40,18 +40,19 @@ function Cita() {
     };
 
     fetchData();
-  }, []);
+  }, [citas]);
 
   const crearCita = async (e) => {
     e.preventDefault();
     try {
       const res = await axios.post("http://localhost:8082/citas", values);
-      setCitas([...citas, res.data]);
+      const nuevaCita = res.data.cita;
+      setCitas((citasActuales) => [...citasActuales, nuevaCita]);
       console.log(res);
     } catch (err) {
       console.error(err);
     }
-  };
+  };  
 
   const confirmarCita = async (id) => {
     try {
