@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function EditarAlimento({ id, isOpen, onClose, onConfirm }) {
-  const [alimento, setAlimento] = useState("");
-  const [dias, setDias] = useState("");
+export default function EditarAlimento({ id, nombre, dias, isOpen, onClose, onConfirm }) {
+  const [alimento, setAlimento] = useState(nombre);
+  const [cantidadDias, setCantidadDias] = useState(dias);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-  }, [id]);
+    setAlimento(nombre);
+    setCantidadDias(dias);
+  }, [id, nombre, dias]);
 
   const actualizarAlimento = async () => {
     setLoading(true);
@@ -17,11 +19,11 @@ export default function EditarAlimento({ id, isOpen, onClose, onConfirm }) {
     try {
       await axios.put(`http://localhost:8082/comidas/${id}`, {
         nombre_alimento: alimento,
-        cantidad_dias: dias,
+        cantidad_dias: cantidadDias,
       });
 
       alert("Alimento actualizado con éxito");
-      onConfirm();
+      onConfirm("Datos actualizados con éxito");
     } catch (error) {
       console.error("Error en la solicitud:", error);
       setError("Error al actualizar el alimento");
@@ -45,7 +47,6 @@ export default function EditarAlimento({ id, isOpen, onClose, onConfirm }) {
               <div className="flex-1 m-2">
                 <input
                   className="w-full border rounded-lg p-2"
-                  placeholder="Alimento"
                   type="text"
                   value={alimento}
                   onChange={(e) => setAlimento(e.target.value)}
@@ -54,10 +55,9 @@ export default function EditarAlimento({ id, isOpen, onClose, onConfirm }) {
               <div className="flex-1 m-2">
                 <input
                   className="w-full border rounded-lg p-2"
-                  placeholder="Dias"
                   type="number"
-                  value={dias}
-                  onChange={(e) => setDias(e.target.value)}
+                  value={cantidadDias}
+                  onChange={(e) => setCantidadDias(e.target.value)}
                 />
               </div>
             </div>

@@ -40,9 +40,8 @@ function MiPerfil() {
           setNombre("");
           setCorreo("");
           setContrasena("");
-        }
-        else{
-          alert('No se detectaron cambios')
+        } else {
+          alert("No se detectaron cambios");
         }
       } catch (error) {
         console.error("Error en la solicitud:", error);
@@ -51,26 +50,26 @@ function MiPerfil() {
     };
 
     fetchData();
-  }, [id]);
+  }, []);
 
   const Actualizar = async () => {
-    await axios
-      .put(`http://localhost:8082/usuarios/${id}`, {
+    try {
+      const response = await axios.put(`http://localhost:8082/usuarios/${id}`, {
         nombre: nombre,
         correo: correo,
         contrasena: contrasena,
-      })
-      .then((response) => {
-        if (response.status >= 200 && response.status < 300) {
-          alert("Usuario actualizado con éxito");
-        }
-      })
-      .catch((error) => {
-        console.error("Error en la solicitud:", error);
       });
-    setNombre("");
-    setCorreo("");
-    setContrasena("");
+
+      if (response.status >= 200 && response.status < 300) {
+        alert("Usuario actualizado con éxito");
+      }
+    } catch (error) {
+      console.error("Error en la solicitud:", error);
+    } finally {
+      setNombre("");
+      setCorreo("");
+      setContrasena("");
+    }
   };
 
   return (
