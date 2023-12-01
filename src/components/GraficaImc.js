@@ -1,7 +1,7 @@
 /* global google */
 
 import React, { useState, useEffect } from "react";
-
+import IMC from "../img/imc.jpeg"
 const Modal = ({ isOpen, onClose, onSave }) => {
   const [nuevosDatos, setNuevosDatos] = useState({
     mes: 0,
@@ -191,7 +191,9 @@ const GraficaImc = () => {
       <div className="w-full max-w-screen-lg ml-[30%] my-10">
         <div id="lineChart" className="w-[50%] h-64 border"></div>
       </div>
+      <img src={IMC} alt="imc" className="object-fill inset-y-0 ml-[30%] my-10 right-0 w-[38%] h-[38%] items-center"/>
     </div>
+
   );
 };
 
