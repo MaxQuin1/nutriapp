@@ -53,24 +53,24 @@ function Pacientes() {
     <>
       <div className="h-screen bg-cover bg-center relative" id="mydiv">
         <Navbar />
-        <div className=" flex m-3 w-[15%] bg-white border px-4 rounded">
-          <input placeholder="Buscar" />
+        {/* <div className=" flex m-3 w-0 bg-white border px-4 rounded"> */}
+          {/* <input placeholder="Buscar" /> */}
           <button
-            className="bg-purple-400 p-2 rounded"
+            className="bg-purple-400 p-2 flex m-3 px-4 rounded"
             onClick={crearNuevoToken}
           >
             Generar Token
           </button>
-        </div>
+        {/* </div> */}
           {nuevoToken ? (
             <>
-            <div className="flex relative bg-red-100 p-2 w-[30%] rounded">
+            <div className="flex relative bg-red-100 ml-4 p-2 w-[12%] rounded">
               <p>Nuevo token:</p>
               <p className="ml-4 bg-red-400 rounded p-2">{nuevoToken}</p>
               </div>
             </>
           ) : null}
-        <div className="h-[73vh] flex flex-col items-center p-2 bg-lime-100 overflow-y-auto">
+        <div className="h-[73vh] flex flex-col items-center p-2 bg-lime-100 mt-3 overflow-y-auto">
           {pacientes && pacientes.length > 0 ? (
             pacientes.map((paciente, index) =>
               cardPerson({
