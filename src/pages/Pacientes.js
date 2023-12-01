@@ -70,7 +70,7 @@ function Pacientes() {
               </div>
             </>
           ) : null}
-        <div className="h-[80vh] flex flex-col items-center p-2 bg-lime-100 mt-3 overflow-y-auto">
+        <div className="h-[80vh] flex flex-col items-center p-2 text-white bg-lime-100 mt-3 overflow-y-auto">
           {pacientes && pacientes.length > 0 ? (
             pacientes.map((paciente, index) =>
               cardPerson({
