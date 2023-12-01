@@ -12,6 +12,11 @@ function Registro() {
 
   const Registrar = async () => {
     try {
+      if (!tipo || !nombre || !correo || !contrasena || !confimContrasena || !token) {
+        alert("Todos los campos deben ser completados");
+        return;
+      }
+
       if (contrasena !== confimContrasena) {
         alert("Las contraseñas no coinciden");
         return;

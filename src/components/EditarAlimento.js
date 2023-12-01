@@ -17,6 +17,11 @@ export default function EditarAlimento({ id, nombre, dias, isOpen, onClose, onCo
     setError(null);
 
     try {
+      if (!alimento || !cantidadDias ) {
+        alert("Todos los campos deben ser completados");
+        return;
+      }
+
       await axios.put(`http://localhost:8082/comidas/${id}`, {
         nombre_alimento: alimento,
         cantidad_dias: cantidadDias,

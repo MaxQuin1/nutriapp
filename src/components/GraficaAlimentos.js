@@ -56,8 +56,8 @@ export default function GraficaAlimentos() {
 
   const agregarAlimento = async () => {
     try {
-      if (alimento === "" || dias === "") {
-        alert("Se detectó un campo vacío");
+      if (!alimento || !dias ) {
+        alert("Todos los campos deben ser completados");
         return;
       } else if (comidas.length <= 8) {
         const respuesta = await axios.post("http://localhost:8082/comidas", {

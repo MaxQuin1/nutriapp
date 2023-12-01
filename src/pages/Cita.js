@@ -52,7 +52,7 @@ function Cita() {
     } catch (err) {
       console.error(err);
     }
-  };  
+  };
 
   const confirmarCita = async (id) => {
     try {
