@@ -191,9 +191,8 @@ const GraficaImc = () => {
       <div className="w-full max-w-screen-lg ml-[30%] my-10">
         <div id="lineChart" className="w-[50%] h-64 border"></div>
       </div>
-      <img src={IMC} alt="imc" className="object-fill inset-y-0 ml-[30%] my-10 right-0 w-[38%] h-[38%] items-center"/>
+      <img src={IMC} alt="imc" className="object-fill inset-y-0 ml-[30%] my-10 right-0 w-[30%] h-[30%] items-center"/>
     </div>
-
   );
 };
 
