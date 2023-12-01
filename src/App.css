@@ -42,7 +42,7 @@
 }
 
 div#mydiv{
-  background-image: url('../src/img/fondo.jpg');
+  background-image: url('../src/img/fondo.jpeg');
    /* Ajusta la opacidad según tus preferencias */
   background-size: cover;
   background-position: center;
