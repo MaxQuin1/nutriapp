@@ -9,6 +9,11 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   const Login = async (e) => {
+    if (!email || !password ) {
+      alert("Todos los campos deben ser completados");
+      return;
+    }
+
     e.preventDefault();
     const response = await axios.post("http://localhost:8082/login", {
       correo_electronico: email,

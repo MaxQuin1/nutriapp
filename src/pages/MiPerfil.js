@@ -54,6 +54,11 @@ function MiPerfil() {
 
   const Actualizar = async () => {
     try {
+      if (!nombre || !correo || !contrasena ) {
+        alert("Todos los campos deben ser completados");
+        return;
+      }
+
       const response = await axios.put(`http://localhost:8082/usuarios/${id}`, {
         nombre: nombre,
         correo: correo,

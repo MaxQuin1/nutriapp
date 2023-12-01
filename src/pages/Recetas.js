@@ -42,7 +42,7 @@ export default function Recetas() {
       <Navbar />
       <div className="bg-lime-100 min-h-screen flex flex-col items-center justify-center p-8">
         <div className="flex flex-col items-center mb-4">
-          <label className="text-2xl font-bold mb-2">Busca el platillo que nescecitas</label>
+          <label className="text-2xl font-bold mb-2">Busca el platillo que necesitas</label>
           <div className="flex items-center">
             <input
               className="p-3 rounded border border-gray-300 focus:outline-none focus:border-green-500 mr-2"
